@@ -4,7 +4,7 @@ services:
         build: 
             context: .
             dockerfile: dockerfile
-        container_name: login-node
+        container_name: login_node
         image: nodejs
         restart: unless-stopped
         build: .
@@ -17,10 +17,10 @@ services:
             - mongo
             - redis_db
     mongo:
-        container_name: login-mongo
+        container_name: login_mongo
         image: mongo
         restart: unless-stopped
     redis_db:
-        container_name: login-redis
+        container_name: login_redis
         image: "redis:alpine"
         restart: unless-stopped
