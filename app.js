@@ -11,6 +11,7 @@ var redisStore = require('connect-redis')(session)
 var client = redis.createClient()
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/User');
+var uuid = require('uuid').v4
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,10 +35,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('express-session')({
+  genid: (req)=>{
+    return uuid();
+  },
   secret:'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  cookie:{maxAge:2592000000, domain:'localhost'},
+  cookie:{maxAge:2592000000},
   store:new redisStore({host:'localhost',port:6379,client:client, ttl:260})
   
 }))

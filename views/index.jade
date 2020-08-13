@@ -2,7 +2,7 @@ extends layout
 
 block content
   div(class="jumbotron" style="margin-top:2rem")
-    if user
+    if locals.user
       h1 welcome back #{user.username} !
       p Your email is #{user.email}
       p First name: #{user.firstname}
