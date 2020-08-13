@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  div(class="jumbotron" style="margin-top:2rem")
+    if user
+      h1 welcome back #{user.username} !
+      p Your email is #{user.email}
+      p First name: #{user.firstname}
+      p Last name: #{user.lastname}
+    else
+      h1 Welcode to the home page
+      p Create an account to see profile details
+      p For this projects, I am using express for my backend.
+      p I am using passportjs to handle user authentication.
+      p I am using express-session to uniquely associate a connection to a user
+      p I am using redis to quickly save users sessions
+      h5 What the project is:
+      p For this project, I wanted to create a secure login app that would offer quick logins. I will later on add a way for users to prove their email by sending email verification and maybe implement captcha to prevent bots from regestering. Also adding ddos protection and users max attempt logins may be a fun featur to implemet. 
+      h5 Why:
+      p User login has always been a mistery for me. I never really understod how a website could know who a user is. Taking on this project, I learned about authentication,authorization, different website attacks, quick access to database using redis (database based on RAM), and so much more. There are a bunch of tutorials, but mostly seemed outdated. May release version of this proj with most up to date node version.

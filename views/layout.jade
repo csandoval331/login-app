@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title= title
+    //- link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  body
+    //- nav(class="navbar navbar-expand-lg navbar-light bg-light")
+    nav(class="navbar navbar-expand-sm navbar-light bg-light")
+      span(class="navbar-brand") Navbar
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse" id="navbarNav")
+        ul(class="navbar-nav")
+          li(class="nav-item") #[a(href="/login" class="nav-link") login]
+          li(class="nav-item") #[a(href="/logout" class="nav-link") logout]
+          li(class="nav-item") #[a(href="/register" class="nav-link") register]
+          li(class="nav-item") #[a(href="/" class="nav-link") home]
+
+    div(class="container")
+      //- each m in msg ? msg : ['']
+      //-   h5=m
+      //- each e in err ? err : ['']
+      //-   h5(style="color:red")=e
+
+      block content
+
+    script(src="/js/jquery.slim.js")
+    script(src="/js/bootstrap.min.js")
+    script(src="/js/popper.min.js")
+
