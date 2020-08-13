@@ -1,8 +1,33 @@
+html, body{
+  min-height: 100%;
+  height:100%;
+}
 body {
-  padding:0px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:#66C3FF;
 }
 
 a {
   color: #00B7FF;
+}
+
+.jumbotron{
+  background-color: #DCE1E9;
+}
+
+.card{
+  margin-top: 10px;
+  background-color: #DCE1E9;
+}
+
+.table a{
+  color:black;
+  text-decoration: underline;
+  text-decoration-thickness:1px;
+  text-decoration-color:#0000EE ;
+}
+
+.table a:hover{
+  text-decoration-color: white;
 }
