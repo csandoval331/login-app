@@ -8,8 +8,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var redis = require('redis')
 var redisStore = require('connect-redis')(session)
-var client = redis.createClient('redis://redis_db:6379')
-// var client = redis.createClient()
+// var client = redis.createClient('redis://redis_db:6379')
+var client = redis.createClient()
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/User');
 var uuid = require('uuid').v4
@@ -18,12 +18,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login')
 var registerRouter = require('./routes/register')
-var logoutRouter = require('./routes/logout')
+var logoutRouter = require('./routes/logout');
 
 mongoose.connect('mongodb://mongo/userlogin',{
   useNewUrlParser:true,
   useUnifiedTopology:true
-}).then(console.log("successfully connected to db"))
+})
+.then(()=>console.log("successfully connected to db") )
+.catch(err => console.log("error connecting to db"))
 
 var app = express();
 

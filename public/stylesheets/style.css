@@ -31,3 +31,7 @@ a {
 .table a:hover{
   text-decoration-color: white;
 }
+
+p{
+  text-indent: 2rem;
+}
