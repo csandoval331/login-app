@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+    app:
+        build: 
+            context: .
+            dockerfile: dockerfile
+        container_name: login-node
+        image: nodejs
+        restart: unless-stopped
+        build: .
+        ports:
+            - "3000:3000"
+        links:
+            - mongo
+            - redis_db
+        depends_on: 
+            - mongo
+            - redis_db
+    mongo:
+        container_name: login-mongo
+        image: mongo
+        restart: unless-stopped
+    redis_db:
+        container_name: login-redis
+        image: "redis:alpine"
+        restart: unless-stopped

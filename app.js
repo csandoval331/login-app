@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var redis = require('redis')
 var redisStore = require('connect-redis')(session)
-var client = redis.createClient()
+var client = redis.createClient('redis://redis_db:6379')
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/User');
 var uuid = require('uuid').v4
@@ -19,7 +19,7 @@ var loginRouter = require('./routes/login')
 var registerRouter = require('./routes/register')
 var logoutRouter = require('./routes/logout')
 
-mongoose.connect('mongodb://localhost/userlogin',{
+mongoose.connect('mongodb://mongo/userlogin',{
   useNewUrlParser:true,
   useUnifiedTopology:true
 }).then(console.log("successfully connected to db"))
@@ -42,7 +42,7 @@ app.use(require('express-session')({
   resave: false,
   saveUninitialized: true,
   cookie:{maxAge:2592000000},
-  store:new redisStore({host:'localhost',port:6379,client:client, ttl:260})
+  store:new redisStore({host:'redis_db',port:6379,client:client, ttl:260})
   
 }))
 app.use(passport.initialize() );
